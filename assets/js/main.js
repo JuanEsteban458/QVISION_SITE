@@ -2,7 +2,7 @@
   const qs = (s, el=document) => el.querySelector(s);
   const qsa = (s, el=document) => Array.from(el.querySelectorAll(s));
 
-  // Mobile nav
+  
   const toggle = qs('[data-nav-toggle]');
   const navList = qs('[data-nav-list]');
   if (toggle && navList) {
@@ -11,7 +11,7 @@
     });
   }
 
-  // Dropdown
+  
   const drop = qs('[data-dropdown]');
   if (drop) {
     const btn = qs('[data-dropdown-btn]', drop);
@@ -27,7 +27,7 @@
     });
   }
 
-  // Login modal
+  
   const modal = qs('[data-login-modal]');
   const openBtn = qs('[data-open-login]');
   const closeBtns = qsa('[data-close-login]');
@@ -52,7 +52,7 @@
     if (e.key === 'Escape') closeModal();
   });
 
-  // Register button enabled only when 2 checkboxes are checked
+  
   const regForm = qs('[data-register-form]');
   if (regForm) {
     const btn = qs('[data-register-btn]', regForm);

@@ -14,7 +14,7 @@
     <h2 class="sectionTitle">Novedades</h2>
 
     <div class="novedadesGrid">
-      <!-- Left big card -->
+
       <article class="card">
         <img src="https://izyacademy.com//wp-content/uploads/2024/12/rb_1762.webp" alt="Estudiante" />
         <div class="card__titleBar">Bienvenidos a IzyAcademy</div>
@@ -24,7 +24,7 @@
         <div class="promo">¡Aprovecha!, este mes hasta un <strong>35%</strong> de descuento en todos nuestros cursos y rutas de formación 🔒</div>
       </article>
 
-      <!-- Right grid of 4 cards -->
+      
       <div class="smallGrid">
         <article class="card miniCard">
           <img src="https://i.pinimg.com/originals/49/dc/4d/49dc4d30262b6767f432c44ee62681a7.png" alt="Comunidad" />

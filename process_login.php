@@ -24,7 +24,7 @@ if (!password_verify($pass, $user['password_hash'] ?? '')) {
     back_with_error('Usuario o contraseña inválidos.');
 }
 
-// Sesión iniciada
+
 $_SESSION['user'] = [
     'nombre' => $user['nombre'] ?? 'Usuario',
     'apellidos' => $user['apellidos'] ?? '',

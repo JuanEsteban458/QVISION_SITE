@@ -11,7 +11,7 @@
   <div class="container">
     <h2 class="sectionTitle">Aprende a construir</h2>
 
-    <!-- 3 ICONOS CIRCULARES -->
+    
     <div class="learnTop">
       <div class="learnItem">
         <div class="learnCircle">
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <!-- BANNER CON TEXTO ENCIMA (como la imagen) -->
+    
     <div class="learnHero">
       <img class="learnHero__img"
           src="https://izyacademy.com//wp-content/uploads/2024/05/banner_home.webp"

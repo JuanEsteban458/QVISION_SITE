@@ -78,7 +78,7 @@ $displayName = $loggedUser ? ($loggedUser['nombre'] ?? 'Usuario') : null;
     </div>
   <?php endif; ?>
 
-  <!-- Modal Login -->
+  
   <div class="modal" data-login-modal aria-hidden="true">
     <div class="modal__backdrop" data-close-login></div>
     <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
