@@ -3,9 +3,9 @@ session_start();
 require_once __DIR__ . '/partials/auth.php';
 
 function back_with_error(string $msg): void {
-    $_SESSION['flash'] = ['type' => 'err', 'message' => $msg];
-    header('Location: index.php#registro');
-    exit;
+$_SESSION['flash'] = ['type' => 'err', 'message' => $msg];
+header('Location: index.php#registro');
+exit;
 }
 
 $nombre = trim($_POST['nombre'] ?? '');
@@ -42,7 +42,7 @@ $user = [
     'email' => strtolower($email),
     'password_hash' => password_hash($pass, PASSWORD_DEFAULT),
 ];
-upsert_user($user);
+create_user($user);
 
 $_SESSION['flash'] = ['type' => 'ok', 'message' => 'Registro exitoso. Ahora puedes iniciar sesión.'];
 header('Location: index.php#registro');

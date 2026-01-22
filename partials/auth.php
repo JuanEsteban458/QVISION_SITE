@@ -1,51 +1,33 @@
 <?php
 
+// partials/auth.php
+declare(strict_types=1);
+
 function users_file_path(): string {
-    return __DIR__ . '/../data/users.json';
+return __DIR__ . '/../data/users.json';
 }
 
-function load_users(): array {
-    $path = users_file_path();
-    if (!file_exists($path)) {
-        return [];
-    }
-    $raw = file_get_contents($path);
-    $data = json_decode($raw, true);
-    return is_array($data) ? $data : [];
-}
-
-function save_users(array $users): void {
-    $path = users_file_path();
-    $tmp = $path . '.tmp';
-    file_put_contents($tmp, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    rename($tmp, $path);
-}
+require_once __DIR__ . '/db.php';
 
 function find_user_by_email(string $email): ?array {
-    $email = strtolower(trim($email));
-    foreach (load_users() as $u) {
-        if (strtolower($u['email'] ?? '') === $email) {
-            return $u;
-        }
-    }
-    return null;
+$email = strtolower(trim($email));
+$pdo = db();
+$st = $pdo->prepare("SELECT id, nombre, apellidos, email, password_hash FROM users WHERE email = :email LIMIT 1");
+$st->execute([':email' => $email]);
+$user = $st->fetch();
+return $user ?: null;
 }
 
-function upsert_user(array $user): void {
-    $users = load_users();
-    $email = strtolower(trim($user['email'] ?? ''));
-    $out = [];
-    $replaced = false;
-    foreach ($users as $u) {
-        if (strtolower($u['email'] ?? '') === $email) {
-            $out[] = $user;
-            $replaced = true;
-        } else {
-            $out[] = $u;
-        }
-    }
-    if (!$replaced) {
-        $out[] = $user;
-    }
-    save_users($out);
+function create_user(array $user): void {
+$pdo = db();
+$st = $pdo->prepare("
+INSERT INTO users (nombre, apellidos, email, password_hash)
+VALUES (:nombre, :apellidos, :email, :password_hash)
+");
+$st->execute([
+':nombre' => $user['nombre'],
+':apellidos' => $user['apellidos'],
+':email' => strtolower($user['email']),
+':password_hash' => $user['password_hash'],
+]);
 }
